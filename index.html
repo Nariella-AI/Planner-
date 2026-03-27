@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Planner Pro: приветственный лендинг и удобный планер идей с календарём и localStorage." />
+  <title>Planner Pro | Лендинг + Планер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="landing card">
+      <div class="landing-content">
+        <p class="landing-label">Planner Pro</p>
+        <h1>Добро пожаловать в ваш контент-планер</h1>
+        <p class="landing-text">
+          Управляйте идеями в одном месте: добавляйте записи, ставьте даты, отмечайте выполнение,
+          фильтруйте и просматривайте всё в календаре. Данные сохраняются прямо в вашем браузере.
+        </p>
+        <div class="landing-actions">
+          <a class="btn-primary" href="#planner">Открыть планер</a>
+          <button id="jumpToTodayBtn" class="btn-ghost" type="button">Сегодня в календаре</button>
+        </div>
+      </div>
+      <div class="landing-features">
+        <div class="feature">✅ Фильтры: все / активные / выполненные</div>
+        <div class="feature">📅 Календарный режим по датам</div>
+        <div class="feature">✏️ Редактирование и удаление идей</div>
+        <div class="feature">💾 Автосохранение в localStorage</div>
+      </div>
+    </section>
+
+    <section class="app" id="planner">
+      <div class="card">
+        <div class="topbar">
+          <div class="title-wrap">
+            <h2>Планер идей</h2>
+            <p class="subtitle">
+              Планируй контент по датам, переключайся между списком и календарём,
+              отмечай выполненное и храни всё локально в браузере.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-number" id="totalCount">0</div>
+              <div class="stat-label">всего</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="activeCount">0</div>
+              <div class="stat-label">активных</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="doneCount">0</div>
+              <div class="stat-label">выполнено</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <input
+            id="ideaInput"
+            class="input"
+            type="text"
+            placeholder="Например: Пост про 10 идей контента для Telegram"
+          />
+          <input id="planDateInput" class="date-input" type="date" />
+          <button id="addBtn" class="add-btn">Добавить идею</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="filters">
+              <button class="filter-btn active" data-filter="all">Все</button>
+              <button class="filter-btn" data-filter="active">Активные</button>
+              <button class="filter-btn" data-filter="done">Выполненные</button>
+            </div>
+
+            <div class="views">
+              <button class="view-btn active" data-view="list">Список</button>
+              <button class="view-btn" data-view="calendar">Календарь</button>
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <button id="clearBtn" class="clear-btn">Очистить всё</button>
+          </div>
+        </div>
+
+        <div class="content-area">
+          <div id="listView" class="list"></div>
+
+          <div id="calendarView" class="hidden">
+            <div class="calendar-header">
+              <div class="calendar-title" id="calendarTitle">Месяц</div>
+
+              <div class="calendar-controls">
+                <button id="prevMonthBtn" class="calendar-nav-btn">← Назад</button>
+                <button id="todayBtn" class="calendar-nav-btn">Сегодня</button>
+                <button id="nextMonthBtn" class="calendar-nav-btn">Вперёд →</button>
+              </div>
+            </div>
+
+            <div class="calendar-weekdays">
+              <div class="weekday">Пн</div>
+              <div class="weekday">Вт</div>
+              <div class="weekday">Ср</div>
+              <div class="weekday">Чт</div>
+              <div class="weekday">Пт</div>
+              <div class="weekday">Сб</div>
+              <div class="weekday">Вс</div>
+            </div>
+
+            <div id="calendarGrid" class="calendar-grid"></div>
+          </div>
+        </div>
+
+        <div class="hint">
+          Enter — быстро добавить идею. Клик по карточке в календаре — отметить как выполненную.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
